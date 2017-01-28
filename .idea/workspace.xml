@@ -28,8 +28,18 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
               <folding>
-                <element signature="e#300#301#0" expanded="true" />
-                <element signature="e#324#325#0" expanded="true" />
+                <element signature="e#378#379#0" expanded="false" />
+                <element signature="e#401#402#0" expanded="false" />
+                <element signature="e#436#437#0" expanded="false" />
+                <element signature="e#461#462#0" expanded="false" />
+                <element signature="e#514#515#0" expanded="false" />
+                <element signature="e#550#551#0" expanded="false" />
+                <element signature="e#583#584#0" expanded="false" />
+                <element signature="e#607#608#0" expanded="false" />
+                <element signature="e#648#649#0" expanded="false" />
+                <element signature="e#678#679#0" expanded="false" />
+                <element signature="e#720#721#0" expanded="false" />
+                <element signature="e#744#745#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -78,8 +88,8 @@
       <file leaf-file-name="AKS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AKS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2570146">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.65656567">
+              <caret line="84" column="60" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -89,7 +99,7 @@
         <entry file="file://$PROJECT_DIR$/src/AKScopy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+              <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,8 +128,8 @@
         <option value="$PROJECT_DIR$/src/Result.java" />
         <option value="$PROJECT_DIR$/src/Fermat.java" />
         <option value="$PROJECT_DIR$/src/FrontEnd.java" />
-        <option value="$PROJECT_DIR$/src/AKScopy.java" />
         <option value="$PROJECT_DIR$/src/Naive.java" />
+        <option value="$PROJECT_DIR$/src/AKScopy.java" />
         <option value="$PROJECT_DIR$/src/AKS.java" />
       </list>
     </option>
@@ -156,6 +166,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,8 +202,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -378,13 +388,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12445887" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25052083" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -392,13 +400,15 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12445887" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -428,8 +438,89 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FrontEnd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Fermat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Naive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="26" selection-start-line="52" selection-start-column="12" selection-end-line="62" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AKS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AKScopy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding>
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -471,8 +562,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -514,8 +615,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -557,8 +668,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -600,8 +721,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -643,8 +774,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -686,8 +827,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -729,8 +880,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
           <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#401#402#0" expanded="false" />
+            <element signature="e#436#437#0" expanded="false" />
+            <element signature="e#461#462#0" expanded="false" />
+            <element signature="e#514#515#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#678#679#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -743,18 +904,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Naive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="26" selection-start-line="52" selection-start-column="12" selection-end-line="62" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AKScopy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+          <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -777,10 +930,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Naive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="26" selection-start-line="52" selection-start-column="12" selection-end-line="62" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AKS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2570146">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.65656567">
+          <caret line="84" column="60" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="60" />
           <folding />
         </state>
       </provider>

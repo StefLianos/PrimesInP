@@ -83,16 +83,45 @@ public class AKS {
         // o_r(n) is the multiplicative order of n modulo r
         // the multiplicative order of n modulo r is the
         // smallest positive integer k with	n^k = 1 (mod r).
+        BigInteger k = BigInteger.ONE;
+        BigInteger r = BigInteger.ONE;
 
-        int r =0;
-        BigInteger bR = new BigInteger(r+"");
+
+        while (k.doubleValue()<logp2(bN.doubleValue()))
+        {
+            //check if k is multiplicative order with current r
+            r = r.add(BigInteger.ONE);
+            k = multiorder(bN,r);
+
+        }
 
 
         //Step 3 If 1 < gcd(a,n) < n for some a <= r, output COMPOSITE
+        for(BigInteger i = BigInteger.valueOf(2); i.compareTo(r) <= 0; i = i.add(BigInteger.ONE))
+        {
+            BigInteger gcd = bN.gcd(i);
+
+            if(gcd.compareTo(BigInteger.ONE) > 0 && gcd.compareTo(bN) < 0)
+            {
+
+                //Return COMPOSITE
+
+                result.addResultLine("failed at Step 3");
+                result.addResultLine("1 < "+gcd.toString()+" < "+bN.toString());
+                System.out.println("failed at Step 3");
+                System.out.println("1 < "+gcd.toString()+" < "+bN.toString());
+
+                long timerEnd = System.currentTimeMillis()-timerStart;
+                result.setTime(timerEnd);
+                System.out.println(timerEnd);
+
+                return result;
+            }
+        }
 
 
         //Step 4 If n <= r, output PRIME
-        if(bN.compareTo(bR) == -1 || bN.compareTo(bR)== 0)
+        if(bN.compareTo(r) == -1 || bN.compareTo(r)== 0)
         {
             result.setPrimeBoolean(true);
             isPrime = true;
@@ -116,20 +145,33 @@ public class AKS {
         return result;
     }
 
-    BigInteger totient(BigInteger n) {
-        BigInteger result = n;
+    //calculate log base 2
+    public double logp2 (double n)
+    {
+        double logp2 = (Math.log(n));
+        return logp2 *logp2;
+    }
 
-        for (BigInteger i = BigInteger.valueOf(2); n.compareTo(i.multiply(i)) > 0; i = i.add(BigInteger.ONE)) {
-            if (n.mod(i).compareTo(BigInteger.ZERO) == 0)
-                result = result.subtract(result.divide(i));
+    public BigInteger multiorder (BigInteger n, BigInteger r)
+    {
+        BigInteger k = BigInteger.ZERO;
+        BigInteger result = n.modPow(k,r);
 
-            while (n.mod(i).compareTo(BigInteger.ZERO) == 0)
-                n = n.divide(i);
+        while (result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0)
+        {
+            k = k.add(BigInteger.ONE);
+            result = n.modPow(k,r);
         }
 
-        if (n.compareTo(BigInteger.ONE) > 0)
-            result = result.subtract(result.divide(n));
+        if (r.compareTo(k) <= 0)
+        {
+            return BigInteger.ONE.negate();
+        }
+        else
+        {
+            return k;
+        }
 
-        return result;
     }
+
 }

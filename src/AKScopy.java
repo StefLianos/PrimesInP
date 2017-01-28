@@ -97,7 +97,8 @@ public class AKScopy extends Thread
 		// o_r(n) is the multiplicative order of n modulo r
 		// the multiplicative order of n modulo r is the 
 		// smallest positive integer k with	n^k = 1 (mod r).
-		double log = this.log();
+		double log;
+		log = this.log();
 		double logSquared = log*log;
 		BigInteger k = BigInteger.ONE;
 		BigInteger r = BigInteger.ONE;
