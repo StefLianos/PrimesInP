@@ -9,7 +9,7 @@ public class AKS {
     private static BigInteger bN;
     private static boolean isPrime = false;
 
-    public Result runAKS (String input){
+    public static Result runAKS (String input){
 
 
         //create Result type object
@@ -32,12 +32,12 @@ public class AKS {
 
 
         //prelims step 1
-        BigInteger bA = new BigInteger("0");
+        BigInteger bA = new BigInteger("1");
         BigInteger b1 = new BigInteger("1");
 
         int b = 2;
-        int maxb = Integer.MAX_VALUE;
-        int maxa = Integer.MAX_VALUE;
+        int maxb = 50;
+        int maxa = 50;
 
         //Step 1 If ( n = a^b for a in natural numbers and b > 1), output COMPOSITE
         //TODO think about limits of a and b
@@ -106,6 +106,9 @@ public class AKS {
 
                 //Return COMPOSITE
 
+                result.setPrimeBoolean(false);
+                isPrime = false;
+
                 result.addResultLine("failed at Step 3");
                 result.addResultLine("1 < "+gcd.toString()+" < "+bN.toString());
                 System.out.println("failed at Step 3");
@@ -142,26 +145,77 @@ public class AKS {
         //Step 5 For i = 1 to sqrt(totient)log(n) do
         // if (X+i)^n <> X^n + i (mod X^r - 1,n), output composite;
 
+
+        int iMax = (int) (Math.sqrt(totient(r).doubleValue()) * Math.log(bN.doubleValue()));
+
+        // X^r - 1
+        Poly modPoly = new Poly(BigInteger.ONE, r.intValue()).minus(new Poly(BigInteger.ONE,0));
+        // X^n (mod X^r - 1, n)
+        Poly partialOutcome = new Poly(BigInteger.ONE, 1).modPow(bN, modPoly, bN);
+
+        for( int i = 1; i <= iMax; i++ )
+        {
+            Poly polyI = new Poly(BigInteger.valueOf(i),0);
+            // X^n + i (mod X^r - 1, n)
+            Poly outcome = partialOutcome.plus(polyI);
+            Poly p = new Poly(BigInteger.ONE,1).plus(polyI).modPow(bN, modPoly, bN);
+            if( !outcome.equals(p) )
+            {
+
+                result.setPrimeBoolean(false);
+                isPrime = false;
+
+                result.addResultLine("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome);
+                result.addResultLine("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p);
+                result.addResultLine("failed at step 5");
+
+                System.out.println("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome);
+                System.out.println("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p);
+                System.out.println("failed at step 5");
+
+                return result;
+            }
+        }
+
+        result.addResultLine("successfully passed AKS test");
+        result.addResultLine(bN+" is prime");
+
+        System.out.println("successfully passed AKS test");
+        System.out.println(bN+" is prime");
+
+        //return true
         return result;
     }
 
+
+
+
     //calculate log base 2
-    public double logp2 (double n)
+    public static double logp2 (double n)
     {
         double logp2 = (Math.log(n));
         return logp2 *logp2;
     }
 
-    public BigInteger multiorder (BigInteger n, BigInteger r)
+    //find multiplicity order
+    public static BigInteger multiorder (BigInteger n, BigInteger r)
     {
         BigInteger k = BigInteger.ZERO;
         BigInteger result = n.modPow(k,r);
 
-        while (result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0)
+
+        do
         {
             k = k.add(BigInteger.ONE);
             result = n.modPow(k,r);
         }
+        while( result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0);
+
+        /*while (result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0)
+        {
+            k = k.add(BigInteger.ONE);
+            result = n.modPow(k,r);
+        }*/
 
         if (r.compareTo(k) <= 0)
         {
@@ -173,5 +227,28 @@ public class AKS {
         }
 
     }
+
+    //calculate totient of n
+    public static BigInteger totient( BigInteger n)
+    {
+        BigInteger answer = n;
+
+        for( BigInteger i = BigInteger.valueOf(2); n.compareTo(i.multiply(i)) > 0; i = i.add(BigInteger.ONE) )
+        {
+            if (n.mod(i).compareTo(BigInteger.ZERO) == 0)
+                answer = answer.subtract(answer.divide(i));
+
+            while (n.mod(i).compareTo(BigInteger.ZERO) == 0)
+                n = n.divide(i);
+        }
+
+        if (n.compareTo(BigInteger.ONE) > 0)
+            answer = answer.subtract(answer.divide(n));
+
+        return answer;
+
+    }
+
+
 
 }

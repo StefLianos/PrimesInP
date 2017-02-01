@@ -23,10 +23,10 @@ public class AKScopy extends Thread
 	 * Constructor--just save the number
 	 * @param n
 	 */
-	public AKS(BigInteger n)
+	/*public AKS (BigInteger n)
 	{
 		this.n = n;
-	}
+	}*/
 	
 	/***
 	 * Run AKS.isprime as a thread
@@ -171,7 +171,7 @@ public class AKScopy extends Thread
 	 * 
 	 * http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=primeNumbers
 	 * 
-	 * @param r BigInteger to calculate the totient of
+	 * @param n BigInteger to calculate the totient of
 	 * @return phi(r)--number of integers less than r that are coprime
 	 */
     BigInteger totient(BigInteger n) 

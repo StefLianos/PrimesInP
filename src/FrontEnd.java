@@ -61,6 +61,14 @@ public class FrontEnd extends JFrame {
         });
 
         JButton aksStart = new JButton("Check using the AKS Test");
+        aksStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateText("computing ...");
+                result = AKS.runAKS(inputArea.getText());
+                updateText(result.getText() + "\r\n" + "Total execution time: " + result.getTimeString());
+            }
+        });
 
         subNorth.add(naiveStart);
         subNorth.add(fermatStart);
