@@ -31,7 +31,7 @@ public class Result {
 
     public void addResultLine(String newline)
     {
-        st=st+"\r\n"+newline;
+        st=st+" "+newline;
     }
 
     public long getTime()

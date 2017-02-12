@@ -30,6 +30,8 @@ public class AKS {
         //create bigInteger Object
         bN = new BigInteger(n +"");
 
+        //add input to result text
+        result.addResultLine("Testing "+bN+",");
 
         //prelims step 1
         BigInteger bA = new BigInteger("1");
@@ -55,9 +57,10 @@ public class AKS {
                     result.setPrimeBoolean(false);
                     isPrime = false;
 
-                    result.addResultLine("n = a^b");
-                    result.addResultLine("a = "+bA.toString());
-                    result.addResultLine("b = "+b);
+                    //result.addResultLine("n = a^b");
+                    //result.addResultLine("a = "+bA.toString());
+                    //result.addResultLine("b = "+b);
+
                     System.out.println("n = a^b");
                     System.out.println("a = "+bA.toString());
                     System.out.println("b = "+b);
@@ -65,6 +68,8 @@ public class AKS {
                     long timerEnd = System.currentTimeMillis()-timerStart;
                     result.setTime(timerEnd);
                     System.out.println(timerEnd);
+
+                    result.addResultLine("Failed at Step 1, "+bN+" = a^b with a = "+bA.toString()+" and b = "+b+",");
 
                     return result;
                 }
@@ -83,7 +88,7 @@ public class AKS {
         // o_r(n) is the multiplicative order of n modulo r
         // the multiplicative order of n modulo r is the
         // smallest positive integer k with	n^k = 1 (mod r).
-        BigInteger k = BigInteger.ONE;
+        BigInteger k = BigInteger.ZERO;
         BigInteger r = BigInteger.ONE;
 
 
@@ -92,6 +97,7 @@ public class AKS {
             //check if k is multiplicative order with current r
             r = r.add(BigInteger.ONE);
             k = multiorder(bN,r);
+
 
         }
 
@@ -109,14 +115,16 @@ public class AKS {
                 result.setPrimeBoolean(false);
                 isPrime = false;
 
-                result.addResultLine("failed at Step 3");
-                result.addResultLine("1 < "+gcd.toString()+" < "+bN.toString());
+                result.addResultLine("failed at Step 3,");
+                result.addResultLine("1 < "+gcd.toString()+" < "+bN.toString()+",");
                 System.out.println("failed at Step 3");
                 System.out.println("1 < "+gcd.toString()+" < "+bN.toString());
 
                 long timerEnd = System.currentTimeMillis()-timerStart;
                 result.setTime(timerEnd);
                 System.out.println(timerEnd);
+
+                result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
 
                 return result;
             }
@@ -129,14 +137,16 @@ public class AKS {
             result.setPrimeBoolean(true);
             isPrime = true;
 
-            result.addResultLine("n <= r");
-            result.addResultLine("n = "+ bN.toString() + "and r = " + r);
+            result.addResultLine("n <= r,");
+            result.addResultLine("with n = "+ bN.toString() + "and r = " + r+",");
 
             System.out.println("n <= r");
             System.out.println("n = "+ bN.toString() + "and r = " + r);
 
             long timerEnd = System.currentTimeMillis()-timerStart;
             result.setTime(timerEnd);
+
+            result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
             System.out.println(timerEnd +" ms");
 
             return result;
@@ -165,23 +175,36 @@ public class AKS {
                 result.setPrimeBoolean(false);
                 isPrime = false;
 
-                result.addResultLine("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome);
-                result.addResultLine("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p);
+                result.addResultLine("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome+",");
+                result.addResultLine("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p+",");
                 result.addResultLine("failed at step 5");
 
                 System.out.println("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome);
                 System.out.println("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p);
                 System.out.println("failed at step 5");
 
+
+                long timerEnd = System.currentTimeMillis()-timerStart;
+                result.setTime(timerEnd);
+
+                result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+
                 return result;
             }
         }
 
-        result.addResultLine("successfully passed AKS test");
-        result.addResultLine(bN+" is prime");
+
+        long timerEnd = System.currentTimeMillis()-timerStart;
+        result.setTime(timerEnd);
+        System.out.println(timerEnd);
+
+        result.addResultLine("successfully passed AKS test ");
+        result.addResultLine(bN+" is prime,");
 
         System.out.println("successfully passed AKS test");
         System.out.println(bN+" is prime");
+
+        result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
 
         //return true
         return result;

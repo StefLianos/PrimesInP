@@ -27,6 +27,9 @@ public class Naive {
         //turn P to BigInteger format
         bP = new BigInteger(P+"");
 
+        //add input to result text
+        result.addResultLine("Testing "+bP+",");
+
         //some useful BigIntegers
         BigInteger b2 = new BigInteger("2");
         BigInteger b3 = new BigInteger("3");
@@ -39,11 +42,13 @@ public class Naive {
             result.setPrimeBoolean(false);
             isPrime = false;
 
-            result.addResultLine("Composite because <= 1");
+            result.addResultLine("Composite because <= 1"+",");
             System.out.println("Composite because <= 1");
 
             long timerEnd = System.currentTimeMillis()-timerStart;
             result.setTime(timerEnd);
+
+            result.addResultLine("Execution time = ,"+timerEnd+" ms"+"\r\n");
             System.out.println(timerEnd);
 
             return result;
@@ -53,11 +58,13 @@ public class Naive {
             result.setPrimeBoolean(true);
             isPrime = true;
 
-            result.addResultLine("Prime because <= 3");
+            result.addResultLine("Prime because <= 3"+",");
             System.out.println("Prime because <= 3");
 
             long timerEnd = System.currentTimeMillis()-timerStart;
             result.setTime(timerEnd);
+
+            result.addResultLine("Execution time = ,"+timerEnd+" ms"+"\r\n");
             System.out.println(timerEnd +" ms");
 
             return result;
@@ -67,11 +74,13 @@ public class Naive {
             result.setPrimeBoolean(false);
             isPrime = false;
 
-            result.addResultLine("Composite because divisible by 2 or 3");
+            result.addResultLine("Composite because divisible by 2 or 3"+",");
             System.out.println("Composite because divisible by 2 or 3");
 
             long timerEnd = System.currentTimeMillis()-timerStart;
             result.setTime(timerEnd);
+
+            result.addResultLine("Execution time = ,"+timerEnd+" ms"+"\r\n");
             System.out.println(timerEnd +" ms");
 
             return result;
@@ -93,25 +102,27 @@ public class Naive {
                result.setPrimeBoolean(false);
                isPrime = false;
 
-               result.addResultLine("Composite because divisible by "+bC.toString());
+               result.addResultLine("Composite because divisible by "+bC.toString()+",");
                System.out.println("Composite because divisible by "+bC.toString());
 
                long timerEnd = System.currentTimeMillis()-timerStart;
                result.setTime(timerEnd);
+
+               result.addResultLine("Execution time = ,"+timerEnd+" ms"+"\r\n");
                System.out.println(timerEnd +" ms");
 
                return result;
            }
            else
            {
-               result.addResultLine(bP.toString()+" not divisible by "+bC.toString()+" or "+bC.add(b2).toString());
+               result.addResultLine(bP.toString()+" not divisible by "+bC.toString()+" or "+bC.add(b2).toString()+",");
                System.out.println(bP.toString()+" not divisible by "+bC.toString()+" or "+bC.add(b2).toString());
 
                bC = bC.add(b6);
                sbC = bC.multiply(bC);
 
-               result.addResultLine(bC.toString());
-               result.addResultLine(sbC.toString());
+               //result.addResultLine(bC.toString());
+               result.addResultLine(bC+"^2"+ sbC.toString()+",");
 
                System.out.println(bC.toString());
                System.out.println(sbC.toString());
@@ -125,12 +136,14 @@ public class Naive {
         result.setPrimeBoolean(true);
         isPrime = true;
 
-        result.addResultLine("Prime");
+        result.addResultLine(bP+" is Prime"+",");
         System.out.println("Prime");
 
 
         long timerEnd = System.currentTimeMillis()-timerStart;
         result.setTime(timerEnd);
+
+        result.addResultLine("Execution time = ,"+timerEnd+" ms"+"\r\n");
         System.out.println(timerEnd + " ms");
 
         return result;

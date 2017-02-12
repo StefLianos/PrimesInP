@@ -38,7 +38,8 @@ public class Fermat {
         //turn coefficient A into BigInteger object;
         bA = new BigInteger(A+"");
 
-        System.out.println("testing if "+P+" is prime: \n");
+        result.addResultLine("testing if "+bP+" is prime: "+",");
+        System.out.println("testing if " + bP + " is prime: \n");
 
         for(int i=0; i<=P;++i)
         {
@@ -52,14 +53,13 @@ public class Fermat {
             //Find if bC is divisible by P
             bR = bC.mod(bP);
 
-
-            result.addResultLine("coefficient bA = "+bA);
-            result.addResultLine("prime tested bP = "+bP);
-            result.addResultLine("result of the formula bC = "+bC);
-            result.addResultLine("remainder (of bC%P) bR = "+bR);
+            /*
+            result.addResultLine("coefficient bA = "+bA+"\r");
+            result.addResultLine("result of the formula bC = "+bC+"\r");
+            result.addResultLine("remainder (of bC%P) bR = "+bR+" ,");
+            */
 
             System.out.println("coefficient bA = "+bA);
-            System.out.println("prime tested bP = "+bP);
             System.out.println("result of the formula bC = "+bC);
             System.out.println("remainder (of bC%P) bR = "+bR);
 
@@ -70,9 +70,10 @@ public class Fermat {
 
 
                 //print step
-                result.addResultLine(bA+"^"+bP+"-"+bA+"="+bC);
-                result.addResultLine(bC+" is divisible by "+bP+"\n");
-                System.out.println(bA+"^"+bP+"-"+bA+"="+bC);
+                result.addResultLine(bC+" is divisible by "+bP+" because ");
+                result.addResultLine(bA+"^"+bP+"-"+bA+"="+bC+",");
+
+                System.out.println(bA + "^" + bP + "-" + bA + "=" + bC);
                 System.out.println(bC+" is divisible by "+bP+"\n");
 
                 //Increment the coefficients
@@ -81,11 +82,11 @@ public class Fermat {
             else
             {
 
-                result.addResultLine(A+"^"+bP+"-"+A+"="+bC);
-                result.addResultLine(bC +"\n"+ "is not divisible by " + bP+"\n");
-                result.addResultLine("Therefore " + bP + " is NOT prime");
+                result.addResultLine(bC+" is not divisible by " +bP+" because ");
+                result.addResultLine(A+"^"+bP+"-"+A+"="+bC+" ,");
+                result.addResultLine("Therefore " + bP + " is NOT prime"+",");
 
-                System.out.println(A+"^"+bP+"-"+A+"="+bC);
+                System.out.println(A + "^" + bP + "-" + A + "="+bC);
                 System.out.println(bC +"\n"+ "is not divisible by " + bP+"\n");
                 System.out.println("Therefore " + bP + " is NOT prime");
 
@@ -93,18 +94,21 @@ public class Fermat {
 
                 long timerEnd = System.currentTimeMillis()-timerStart;
                 result.setTime(timerEnd);
-                System.out.println(timerEnd+ "ms");
+
+                result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+                System.out.println(timerEnd + "ms");
 
                 return result;
             }
 
         }
 
-        result.addResultLine(P+" is prime or a fermat liar");
-        System.out.println(P+" is prime or a fermat liar");
+        result.addResultLine(P+" is prime or a fermat liar"+",");
+        System.out.println(P + " is prime or a fermat liar");
 
         long timerEnd = System.currentTimeMillis()-timerStart;
         result.setTime(timerEnd);
+        result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
         System.out.println(timerEnd+" ms");
 
         result.setPrimeBoolean(true);

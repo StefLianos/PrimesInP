@@ -2,18 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class FrontEnd extends JFrame {
 
     private static JFrame frame;
     private static JPanel north, center, south;
     private static Result result;
+    private static JTextArea inputArea;
     private static JTextArea feed;
     private static JScrollPane scroll;
+    private static String filePath = "";
 
     public static void makeWindow() {
 
         result = new Result("",false,0);
+
 
         frame = new JFrame();
         frame.setLayout(new BorderLayout());
@@ -34,7 +38,7 @@ public class FrontEnd extends JFrame {
         north = new JPanel(new BorderLayout());
 
         JPanel subNorth = new JPanel(new FlowLayout());
-        JTextArea inputArea = new JTextArea();
+        inputArea = new JTextArea();
         inputArea.setRows(2);
 
         //make text area less shit looking
@@ -44,8 +48,23 @@ public class FrontEnd extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
-                result = Naive.runNaive(inputArea.getText());
-                updateText(result.getText()+"\r\n"+"Total execution time: "+result.getTimeString());
+                //if csv
+                if (filePath != "")
+                {
+                    try {
+                        ExecuteFromSCV.executeNaiveFromSCV(filePath);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+
+                    updateText("CSV file created with results");
+                    filePath = "";
+                }
+                else
+                {
+                    result = Naive.runNaive(inputArea.getText());
+                    updateText(result.getText() + "\r\n" + "Total execution time: " + result.getTimeString());
+                }
             }
         });
 
@@ -55,8 +74,23 @@ public class FrontEnd extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
-                result = Fermat.runFermat(inputArea.getText());
-                updateText(result.getText() + "\r\n" + "Total execution time: " + result.getTimeString());
+                //if csv
+                if (filePath != "")
+                {
+                    try {
+                        ExecuteFromSCV.executeFermatFromSCV(filePath);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+
+                    updateText("CSV file created with results");
+                    filePath = "";
+                }
+                else
+                {
+                    result = Fermat.runFermat(inputArea.getText());
+                    updateText(result.getText() + "\r\n" + "Total execution time: " + result.getTimeString());
+                }
             }
         });
 
@@ -65,8 +99,23 @@ public class FrontEnd extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
-                result = AKS.runAKS(inputArea.getText());
-                updateText(result.getText() + "\r\n" + "Total execution time: " + result.getTimeString());
+                //if csv
+                if (filePath != "")
+                {
+                    try {
+                        ExecuteFromSCV.executeAKSFromSCV(filePath);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+
+                    updateText("CSV file created with results");
+                    filePath = "";
+                }
+                else
+                {
+                    result = AKS.runAKS(inputArea.getText());
+                    updateText(result.getText() + "\r\n" + "Total execution time: " + result.getTimeString());
+                }
             }
         });
 
@@ -76,6 +125,22 @@ public class FrontEnd extends JFrame {
 
         north.add(subNorth,BorderLayout.NORTH);
         north.add(inputArea,BorderLayout.SOUTH);
+
+        JButton browse = new JButton("import CSV file");
+        north.add(browse);
+
+        browse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser jc = new JFileChooser();
+                int returnValue = jc.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = jc.getSelectedFile();
+                    filePath = selectedFile.getAbsolutePath();
+                }
+                inputArea.setText(filePath);
+            }
+        });
 
         frame.add(north,BorderLayout.NORTH);
     }
@@ -98,7 +163,9 @@ public class FrontEnd extends JFrame {
         clear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                inputArea.setText("");
                 feed.setText("");
+                filePath = "";
             }
         });
 
