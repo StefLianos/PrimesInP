@@ -75,13 +75,16 @@ public class AKS {
                 }
                 else
                 {
+                    System.out.println(bN + " successfully passed substep 1 with a = " + bA + " and b = " + b);
                     b++;
                 }
             }
-
+            //reset b
+            b = 2;
             bA = bA.add(b1);
         }
 
+        System.out.println(bN+" successfully passed step 1");
 
 
         //Step 2 Find the smallest r such that o_r(n) > log^2 n
@@ -130,6 +133,8 @@ public class AKS {
             }
         }
 
+        System.out.println(bN+" successfully passed step 3");
+
 
         //Step 4 If n <= r, output PRIME
         if(bN.compareTo(r) == -1 || bN.compareTo(r)== 0)
@@ -149,8 +154,12 @@ public class AKS {
             result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
             System.out.println(timerEnd +" ms");
 
+
             return result;
         }
+
+        System.out.println(bN+" failed step 4");
+
 
         //Step 5 For i = 1 to sqrt(totient)log(n) do
         // if (X+i)^n <> X^n + i (mod X^r - 1,n), output composite;
@@ -196,12 +205,12 @@ public class AKS {
 
         long timerEnd = System.currentTimeMillis()-timerStart;
         result.setTime(timerEnd);
-        System.out.println(timerEnd);
+        System.out.println(timerEnd+ " ms");
 
         result.addResultLine("successfully passed AKS test ");
         result.addResultLine(bN+" is prime,");
 
-        System.out.println("successfully passed AKS test");
+        System.out.println("successfully passed AKS test at step 5");
         System.out.println(bN+" is prime");
 
         result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
