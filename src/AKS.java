@@ -38,8 +38,8 @@ public class AKS {
         BigInteger b1 = new BigInteger("1");
 
         int b = 2;
-        int maxb = 50;
-        int maxa = 50;
+        int maxb = 250;
+        int maxa = 250;
 
         //Step 1 If ( n = a^b for a in natural numbers and b > 1), output COMPOSITE
         //TODO think about limits of a and b

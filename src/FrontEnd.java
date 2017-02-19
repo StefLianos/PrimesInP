@@ -30,7 +30,7 @@ public class FrontEnd extends JFrame {
         frame.pack();
         frame.setVisible(true);
         frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void setNorth()
