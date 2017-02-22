@@ -15,8 +15,9 @@ public class AKS {
         //create Result type object
         Result result = new Result("",false,0);
 
+        //create bigInteger Object
         //check input validity
-        try{n = Integer.parseInt(input);}
+        try{bN = new BigInteger(n + input);}
         catch(Exception e)
         {
             result.addResultLine("please enter a natural number");
@@ -25,13 +26,11 @@ public class AKS {
         }
 
         //Start timer
-        long timerStart = System.currentTimeMillis();
-
-        //create bigInteger Object
-        bN = new BigInteger(n +"");
+        long timerStart = System.nanoTime();
 
         //add input to result text
-        result.addResultLine("Testing "+bN+",");
+        //result.addResultLine("Testing "+bN+",");
+        result.addResultLine(bN+",");
 
         //prelims step 1
         BigInteger bA = new BigInteger("1");
@@ -47,7 +46,6 @@ public class AKS {
         //iterate through a's
         for (int i=0; i<maxa; i++)
         {
-
             //for every a do test until b == bMAX
             for (int j =2; j <maxb; j++)
             {
@@ -65,11 +63,16 @@ public class AKS {
                     System.out.println("a = "+bA.toString());
                     System.out.println("b = "+b);
 
-                    long timerEnd = System.currentTimeMillis()-timerStart;
-                    result.setTime(timerEnd);
-                    System.out.println(timerEnd);
+                    long timerEnd = System.nanoTime()-timerStart;
 
-                    result.addResultLine("Failed at Step 1, "+bN+" = a^b with a = "+bA.toString()+" and b = "+b+",");
+                    result.setTime(timerEnd);
+                    System.out.println(timerEnd+" ns");
+
+                    //result.addResultLine("Failed at Step 1, "+bN+" = a^b with a = "+bA.toString()+" and b = "+b+",");
+                    System.out.println("Failed at Step 1, "+bN+" = a^b with a = "+bA.toString()+" and b = "+b+",");
+
+                    result.addResultLine(timerEnd+",");
+                    result.addResultLine(isPrime+"\r\n");
 
                     return result;
                 }
@@ -100,8 +103,6 @@ public class AKS {
             //check if k is multiplicative order with current r
             r = r.add(BigInteger.ONE);
             k = multiorder(bN,r);
-
-
         }
 
 
@@ -118,16 +119,19 @@ public class AKS {
                 result.setPrimeBoolean(false);
                 isPrime = false;
 
-                result.addResultLine("failed at Step 3,");
-                result.addResultLine("1 < "+gcd.toString()+" < "+bN.toString()+",");
+                //result.addResultLine("failed at Step 3,");
+                //result.addResultLine("1 < "+gcd.toString()+" < "+bN.toString()+",");
                 System.out.println("failed at Step 3");
                 System.out.println("1 < "+gcd.toString()+" < "+bN.toString());
 
-                long timerEnd = System.currentTimeMillis()-timerStart;
+                long timerEnd = System.nanoTime()-timerStart;
                 result.setTime(timerEnd);
-                System.out.println(timerEnd);
+                System.out.println(timerEnd+" ns");
 
-                result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+                result.addResultLine(timerEnd+",");
+                result.addResultLine(isPrime+"\r\n");
+
+                //result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
 
                 return result;
             }
@@ -142,18 +146,20 @@ public class AKS {
             result.setPrimeBoolean(true);
             isPrime = true;
 
-            result.addResultLine("n <= r,");
-            result.addResultLine("with n = "+ bN.toString() + "and r = " + r+",");
+            //result.addResultLine("n <= r,");
+            //result.addResultLine("with n = "+ bN.toString() + "and r = " + r+",");
 
             System.out.println("n <= r");
             System.out.println("n = "+ bN.toString() + "and r = " + r);
 
-            long timerEnd = System.currentTimeMillis()-timerStart;
+            long timerEnd = System.nanoTime()-timerStart;
             result.setTime(timerEnd);
 
-            result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
-            System.out.println(timerEnd +" ms");
+            result.addResultLine("execution time = ,"+timerEnd+" ns"+"\r\n");
+            System.out.println(timerEnd +" ns");
 
+            result.addResultLine(timerEnd+",");
+            result.addResultLine(isPrime+"\r\n");
 
             return result;
         }
@@ -175,47 +181,56 @@ public class AKS {
         for( int i = 1; i <= iMax; i++ )
         {
             Poly polyI = new Poly(BigInteger.valueOf(i),0);
+
             // X^n + i (mod X^r - 1, n)
             Poly outcome = partialOutcome.plus(polyI);
+
             Poly p = new Poly(BigInteger.ONE,1).plus(polyI).modPow(bN, modPoly, bN);
+
             if( !outcome.equals(p) )
             {
 
                 result.setPrimeBoolean(false);
                 isPrime = false;
 
-                result.addResultLine("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome+",");
-                result.addResultLine("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p+",");
-                result.addResultLine("failed at step 5");
+                //result.addResultLine("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome+",");
+                //result.addResultLine("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p+",");
+                //result.addResultLine("failed at step 5");
 
                 System.out.println("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome);
                 System.out.println("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p);
                 System.out.println("failed at step 5");
 
 
-                long timerEnd = System.currentTimeMillis()-timerStart;
+                long timerEnd = System.nanoTime()-timerStart;
                 result.setTime(timerEnd);
 
-                result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+                //result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+
+                result.addResultLine(timerEnd+",");
+                result.addResultLine(isPrime+"\r\n");
 
                 return result;
             }
         }
 
 
-        long timerEnd = System.currentTimeMillis()-timerStart;
-        result.setTime(timerEnd);
-        System.out.println(timerEnd+ " ms");
+        long timerEnd = System.nanoTime()-timerStart;
 
-        result.addResultLine("successfully passed AKS test ");
-        result.addResultLine(bN+" is prime,");
+        //result.setTime(timerEnd);
+        System.out.println(timerEnd+ " ns");
+
+        //result.addResultLine("successfully passed AKS test ");
+        //result.addResultLine(bN+" is prime,");
 
         System.out.println("successfully passed AKS test at step 5");
         System.out.println(bN+" is prime");
 
-        result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+        //result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
+        result.addResultLine(timerEnd+",");
+        result.addResultLine(isPrime+"\r\n");
 
-        //return true
+
         return result;
     }
 
@@ -233,7 +248,7 @@ public class AKS {
     public static BigInteger multiorder (BigInteger n, BigInteger r)
     {
         BigInteger k = BigInteger.ZERO;
-        BigInteger result = n.modPow(k,r);
+        BigInteger result;
 
 
         do
@@ -243,10 +258,10 @@ public class AKS {
         }
         while( result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0);
 
-        /*while (result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0)
+        /*while (result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 1)
         {
-            k = k.add(BigInteger.ONE);
             result = n.modPow(k,r);
+            k = k.add(BigInteger.ONE);
         }*/
 
         if (r.compareTo(k) <= 0)
