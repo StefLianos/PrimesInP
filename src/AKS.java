@@ -1,4 +1,7 @@
+
+
 import java.math.BigInteger;
+import java.util.Arrays;
 
 /**
  * Created by Stef on 1/27/2017.
@@ -25,11 +28,14 @@ public class AKS {
             return result;
         }
 
+        //TODO manually reject input if 1
+
         //Start timer
         long timerStart = System.nanoTime();
 
         //add input to result text
         //result.addResultLine("Testing "+bN+",");
+        System.out.println("testing "+bN.toString());
         result.addResultLine(bN+",");
 
         //prelims step 1
@@ -38,16 +44,48 @@ public class AKS {
 
         int b = 2;
         int maxb = 250;
+        //BigInteger maxB = new BigInteger("250");
         int maxa = 250;
+        //BigInteger maxA = new BigInteger("250");
 
         //Step 1 If ( n = a^b for a in natural numbers and b > 1), output COMPOSITE
-        //TODO think about limits of a and b
+        //TODO think about limit a and b
 
+
+        if(AKS.checkPow(bN,bN,bN))
+        {
+            //return Composite
+            result.setPrimeBoolean(false);
+            isPrime = false;
+
+            //result.addResultLine("n = a^b");
+            //result.addResultLine("a = "+bA.toString());
+            //result.addResultLine("b = "+b);
+
+            System.out.println("n = a^b");
+            System.out.println("a = "+bA.toString());
+            System.out.println("b = "+b);
+
+            long timerEnd = System.nanoTime()-timerStart;
+
+            result.setTime(timerEnd);
+            System.out.println(timerEnd+" ns");
+
+            //result.addResultLine("Failed at Step 1, "+bN+" = a^b with a = "+bA.toString()+" and b = "+b+",");
+            System.out.println("Failed at Step 1, "+bN+" = a^b with a = "+bA.toString()+" and b = "+b+",");
+
+            result.addResultLine(timerEnd+",");
+            result.addResultLine(isPrime+"\r\n");
+
+            return result;
+        }
+
+        /*
         //iterate through a's
-        for (int i=0; i<maxa; i++)
+        for (int i=0; i<bN.intValueExact(); i++)
         {
             //for every a do test until b == bMAX
-            for (int j =2; j <maxb; j++)
+            for (int j =2; j <bN.intValueExact(); j++)
             {
                 if (bN.equals(bA.pow(b)))
                 {
@@ -78,7 +116,7 @@ public class AKS {
                 }
                 else
                 {
-                    System.out.println(bN + " successfully passed substep 1 with a = " + bA + " and b = " + b);
+                    //System.out.println(bN + " successfully passed substep 1 with a = " + bA + " and b = " + b);
                     b++;
                 }
             }
@@ -87,6 +125,7 @@ public class AKS {
             bA = bA.add(b1);
         }
 
+        */
         System.out.println(bN+" successfully passed step 1");
 
 
@@ -217,6 +256,10 @@ public class AKS {
 
         long timerEnd = System.nanoTime()-timerStart;
 
+
+        result.setPrimeBoolean(true);
+        isPrime = true;
+
         //result.setTime(timerEnd);
         System.out.println(timerEnd+ " ns");
 
@@ -225,6 +268,7 @@ public class AKS {
 
         System.out.println("successfully passed AKS test at step 5");
         System.out.println(bN+" is prime");
+
 
         //result.addResultLine("execution time = ,"+timerEnd+" ms"+"\r\n");
         result.addResultLine(timerEnd+",");
@@ -237,7 +281,19 @@ public class AKS {
 
 
 
-    //calculate log base 2
+    public static double logb2 (double n)
+    {
+        double logb2 = (Math.log10(n)/Math.log10(2));
+        return logb2;
+    }
+
+    public static double logb8 (double n)
+    {
+        double logb8 = (Math.log10(n)/Math.log10(8));
+        return logb8;
+    }
+
+    //calculate log^2
     public static double logp2 (double n)
     {
         double logp2 = (Math.log(n));
@@ -296,6 +352,93 @@ public class AKS {
 
     }
 
+    //returns true if n = x^k
+    public static boolean checkPow(BigInteger N,BigInteger K, BigInteger X)
+    {
+        boolean result = false;
+        double f = AKS.logb2(N.doubleValue());
 
+        System.out.println("checking POW");
+
+        //step 1
+        BigInteger b = BigInteger.ONE;
+
+
+        while(true)
+        {
+            //step 2
+            //int r = POW_8_lg8k(x,k)
+
+            double trunc = b.doubleValue() + AKS.logb8(K.doubleValue());
+            //System.out.println("trunc = "+ trunc);
+
+            //get x^k
+            BigInteger XK = X.pow(K.intValue());
+            //System.out.println("XK = "+XK.toString());
+
+            //convert to binary
+            String bXK = XK.toString(2);
+            //System.out.println("bXK = "+bXK);
+
+            //trunc up to b
+            String bR = bXK.substring(0, (int) trunc);
+            //System.out.println("bR = "+bR);
+
+            //add zeros
+            char zero = '0';
+            int number = bXK.length()-bR.length();
+
+            char[] repeat = new char[number];
+            Arrays.fill(repeat, zero);
+            bR += new String(repeat);
+
+            //System.out.println(bR);
+
+            //set r
+            BigInteger R = new BigInteger(bR,2);
+            //System.out.println("R = "+R.toString());
+
+            //step 3
+            if(N.compareTo(R)<0)
+            {
+                result = false;
+                break;
+            }
+
+            //step 4
+            //build nR R*(1+2^-b)
+            BigInteger b2 = new BigInteger("2");
+            BigInteger nR = R.multiply(BigInteger.ONE.add(b2.pow(b.negate().intValue())));
+
+
+            if(nR.compareTo(N)<=0)
+            {
+                result = false;
+                break;
+            }
+
+            //step 5
+            if(b.doubleValue()>=f)
+            {
+                result = true;
+                break;
+            }
+
+            //step 6
+            if(f<=b.multiply(b2).doubleValue())
+            {
+
+                b = new BigInteger(Double.toString(f));
+            }
+            if(f>b.multiply(b2).doubleValue())
+            {
+                b = b.multiply(b2);
+            }
+
+            System.out.println("checking step 1 with b = "+b);
+        }
+
+        return result;
+    }
 
 }

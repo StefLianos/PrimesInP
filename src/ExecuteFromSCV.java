@@ -1,6 +1,7 @@
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class ExecuteFromSCV {
         String currentDate = ExecuteFromSCV.getDate();
 
         String [] inputs = ExecuteFromSCV.readFile(path);
+        System.out.println("input read !");
 
         //run algorithms and create CSV
 
@@ -86,15 +88,17 @@ public class ExecuteFromSCV {
         File output = new File(currentDate+" output.csv");
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(output));
+            System.out.println("bw created");
 
             for(int i =0;i < inputs.length; i++) {
 
                 //write result on csv
+                System.out.println("test "+i+"/"+inputs.length);
                 Result result = AKS.runAKS(inputs[i]);
                 bw.write(result.getText());
                 //add comma
                 //bw.write(",");
-                System.out.println(result.getText());
+                //System.out.println(result.getText());
 
             }
 
@@ -114,18 +118,21 @@ public class ExecuteFromSCV {
         try {
 
             Scanner inputStrem = new Scanner(file);
+
             while(inputStrem.hasNext())
             {
                 String data = inputStrem.next();
-                System.out.println(data);
+                //System.out.println(data);
+
                 //split data every ,
                 inputs = data.split(",");
+                //System.out.println(Arrays.toString(inputs));
             }
             inputStrem.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        System.out.println("finished reading input");
         return inputs;
     }
 

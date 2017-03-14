@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class Naive {
 
-    private static int P;
+
     private static BigInteger bP;
 
     private static boolean isPrime = false;
@@ -17,7 +17,7 @@ public class Naive {
 
         //turn P to BigInteger format
         //check input validity
-        try{bP = new BigInteger(P+"");}
+        try{bP = new BigInteger(input);}
         catch(Exception e)
         {
             result.addResultLine("please enter a natural number");
@@ -39,7 +39,7 @@ public class Naive {
 
         long timerStart = System.nanoTime();
 
-        if(P<=1)
+        if(bP.compareTo(BigInteger.ONE)<=0)
         {
 
             //SET RESULT
@@ -61,7 +61,7 @@ public class Naive {
 
             return result;
         }
-        else if(P<=3)
+        else if(bP.compareTo(b3)<=0)
         {
 
             //SET RESULT

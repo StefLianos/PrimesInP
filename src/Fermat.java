@@ -5,7 +5,7 @@ import java.math.MathContext;
 public class Fermat {
 
     private static int P;
-    private static int A =0;
+    //private static int A =1;
     private static BigInteger bP;
     private static BigInteger bR;
     private static BigInteger bA;
@@ -21,9 +21,12 @@ public class Fermat {
         Result result = new Result("",false,0);
 
 
+
+        //assign int P
         //turn P into a BigInteger object
         //check input validity
-        try{bP = new BigInteger(P+"");}
+        try{P = Integer.parseInt(input);
+            bP = new BigInteger(input);}
         catch(Exception e)
         {
             result.addResultLine("please enter a natural number");
@@ -35,8 +38,8 @@ public class Fermat {
         long timerStart = System.nanoTime();
 
 
-        //turn coefficient A into BigInteger object;
-        bA = new BigInteger(A+"");
+        //turn coefficient A into BigInteger object of value 1;
+        bA = BigInteger.ONE;
 
         //result.addResultLine("testing if "+bP+" is prime: "+",");
         result.addResultLine(bP+",");
@@ -47,9 +50,7 @@ public class Fermat {
 
 
             //We apply fermat little formula C=(A^p)-A
-            BigInteger bC = new BigInteger("0");
-            bC=(bA.pow(P));
-            bC=bC.subtract(bA);
+            bC=(bA.pow(P)).subtract(bA);
 
             //Find if bC is divisible by P
             bR = bC.mod(bP);
@@ -67,9 +68,6 @@ public class Fermat {
             //check if remainder is equal to zero and therefore if bC is divisible with P
             if(bR.equals(BigInteger.ZERO))
             {
-
-
-
                 //print step
                 //result.addResultLine(bC+" is divisible by "+bP+" because ");
                 //result.addResultLine(bA+"^"+bP+"-"+bA+"="+bC+",");
@@ -87,7 +85,7 @@ public class Fermat {
                 //result.addResultLine(A+"^"+bP+"-"+A+"="+bC+" ,");
                 //result.addResultLine("Therefore " + bP + " is NOT prime"+",");
 
-                System.out.println(A + "^" + bP + "-" + A + "="+bC);
+                System.out.println(bA + "^" + bP + "-" + bA + "="+bC);
                 System.out.println(bC +"\n"+ "is not divisible by " + bP+"\n");
                 System.out.println("Therefore " + bP + " is NOT prime");
 
@@ -109,7 +107,7 @@ public class Fermat {
         }
 
         //result.addResultLine(P+" is prime or a fermat liar"+",");
-        System.out.println(P + " is prime or a fermat liar");
+        System.out.println(bP + " is prime or a fermat liar");
 
         long timerEnd = System.nanoTime()-timerStart;
 
