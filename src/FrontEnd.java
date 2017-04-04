@@ -49,10 +49,10 @@ public class FrontEnd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
                 //if csv
-                if (filePath.contains(".csv"))
+                if (inputArea.getText().contains(".csv"))
                 {
                     try {
-                        ExecuteFromSCV.executeNaiveFromSCV(filePath);
+                        ExecuteFromSCV.executeNaiveFromSCV(inputArea.getText());
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
@@ -74,10 +74,10 @@ public class FrontEnd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
                 //if csv
-                if (filePath.contains(".csv"))
+                if (inputArea.getText().contains(".csv"))
                 {
                     try {
-                        ExecuteFromSCV.executeFermatFromSCV(filePath);
+                        ExecuteFromSCV.executeFermatFromSCV(inputArea.getText());
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
@@ -98,10 +98,10 @@ public class FrontEnd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
                 //if csv
-                if (filePath.contains(".csv"))
+                if (inputArea.getText().contains(".csv"))
                 {
                     try {
-                        ExecuteFromSCV.executeAKSFromSCV(filePath);
+                        ExecuteFromSCV.executeAKSFromSCV(inputArea.getText());
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
