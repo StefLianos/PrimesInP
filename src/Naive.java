@@ -88,7 +88,7 @@ public class Naive {
         {
 
 
-            //SET RESULT
+            //SET RESULT FALSE
 
             result.setPrimeBoolean(false);
             isPrime = false;

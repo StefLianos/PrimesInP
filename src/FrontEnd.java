@@ -49,7 +49,7 @@ public class FrontEnd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
                 //if csv
-                if (filePath != "")
+                if (filePath.contains(".csv"))
                 {
                     try {
                         ExecuteFromSCV.executeNaiveFromSCV(filePath);
@@ -58,7 +58,6 @@ public class FrontEnd extends JFrame {
                     }
 
                     updateText("CSV file created with results");
-                    filePath = "";
                 }
                 else
                 {
@@ -75,7 +74,7 @@ public class FrontEnd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
                 //if csv
-                if (filePath != "")
+                if (filePath.contains(".csv"))
                 {
                     try {
                         ExecuteFromSCV.executeFermatFromSCV(filePath);
@@ -84,7 +83,6 @@ public class FrontEnd extends JFrame {
                     }
 
                     updateText("CSV file created with results");
-                    filePath = "";
                 }
                 else
                 {
@@ -100,7 +98,7 @@ public class FrontEnd extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 updateText("computing ...");
                 //if csv
-                if (filePath != "")
+                if (filePath.contains(".csv"))
                 {
                     try {
                         ExecuteFromSCV.executeAKSFromSCV(filePath);
@@ -109,7 +107,6 @@ public class FrontEnd extends JFrame {
                     }
 
                     updateText("CSV file created with results");
-                    filePath = "";
                 }
                 else
                 {

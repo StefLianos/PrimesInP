@@ -28,8 +28,6 @@ public class AKS {
             return result;
         }
 
-        //TODO manually reject input if 1
-
         //Start timer
         long timerStart = System.nanoTime();
 
@@ -38,19 +36,35 @@ public class AKS {
         System.out.println("testing "+bN.toString());
         result.addResultLine(bN+",");
 
+        //reject 1
+        if(bN.compareTo(BigInteger.ONE)==0)
+        {
+            System.out.println("1 is neither prime or composite");
+            result.addResultLine("1 is neither prime or composite");
+
+            result.setPrimeBoolean(false);
+            isPrime = false;
+
+            long timerend = System.nanoTime()-timerStart;
+            result.setTime(timerend);
+            System.out.println(timerend+" ns");
+
+            result.addResultLine(isPrime+"\r\n");
+
+            return result;
+        }
+
         //prelims step 1
         BigInteger bA = new BigInteger("1");
-        BigInteger b1 = new BigInteger("1");
+        //BigInteger b1 = new BigInteger("1");
 
         int b = 2;
-        int maxb = 250;
+        //int maxb = 250;
         //BigInteger maxB = new BigInteger("250");
-        int maxa = 250;
+        //int maxa = 250;
         //BigInteger maxA = new BigInteger("250");
 
         //Step 1 If ( n = a^b for a in natural numbers and b > 1), output COMPOSITE
-        //TODO think about limit a and b
-
 
         if(AKS.checkPow(bN,bN,bN))
         {
@@ -81,6 +95,7 @@ public class AKS {
         }
 
         /*
+        //OLD STEP 1 IN NON LINEAR TIME
         //iterate through a's
         for (int i=0; i<bN.intValueExact(); i++)
         {
@@ -137,6 +152,7 @@ public class AKS {
         BigInteger r = BigInteger.ONE;
 
 
+        //from https://github.com/kisileno
         while (k.doubleValue()<logp2(bN.doubleValue()))
         {
             //check if k is multiplicative order with current r
@@ -215,18 +231,18 @@ public class AKS {
         // X^r - 1
         Poly modPoly = new Poly(BigInteger.ONE, r.intValue()).minus(new Poly(BigInteger.ONE,0));
         // X^n (mod X^r - 1, n)
-        Poly partialOutcome = new Poly(BigInteger.ONE, 1).modPow(bN, modPoly, bN);
+        Poly tempPoly = new Poly(BigInteger.ONE, 1).modPow(bN, modPoly, bN);
 
         for( int i = 1; i <= iMax; i++ )
         {
             Poly polyI = new Poly(BigInteger.valueOf(i),0);
 
             // X^n + i (mod X^r - 1, n)
-            Poly outcome = partialOutcome.plus(polyI);
+            Poly compareto = tempPoly.plus(polyI);
 
             Poly p = new Poly(BigInteger.ONE,1).plus(polyI).modPow(bN, modPoly, bN);
 
-            if( !outcome.equals(p) )
+            if( !compareto.equals(p) )
             {
 
                 result.setPrimeBoolean(false);
@@ -236,7 +252,7 @@ public class AKS {
                 //result.addResultLine("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p+",");
                 //result.addResultLine("failed at step 5");
 
-                System.out.println("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + outcome);
+                System.out.println("(x+" + i + ")^" + n + " (mod x^" + r + " - 1, " + n + ") = " + compareto);
                 System.out.println("x^" + n + " + " + i + " (mod x^" + r + " - 1, " + n + ") = " + p);
                 System.out.println("failed at step 5");
 
@@ -301,6 +317,7 @@ public class AKS {
     }
 
     //find multiplicity order
+    //returns multiplicative order or -1 if none exists
     public static BigInteger multiorder (BigInteger n, BigInteger r)
     {
         BigInteger k = BigInteger.ZERO;
@@ -312,7 +329,7 @@ public class AKS {
             k = k.add(BigInteger.ONE);
             result = n.modPow(k,r);
         }
-        while( result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0);
+        while(result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 0);
 
         /*while (result.compareTo(BigInteger.ONE) != 0 && r.compareTo(k) > 1)
         {
