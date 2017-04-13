@@ -3,9 +3,7 @@
 import java.math.BigInteger;
 import java.util.Arrays;
 
-/**
- * Created by Stef on 1/27/2017.
- */
+
 public class AKS {
 
     private static int n;
@@ -65,8 +63,8 @@ public class AKS {
         //BigInteger maxA = new BigInteger("250");
 
         //Step 1 If ( n = a^b for a in natural numbers and b > 1), output COMPOSITE
-
         if(AKS.checkPow(bN,bN,bN))
+        //here the arguments are n, max a,max b
         {
             //return Composite
             result.setPrimeBoolean(false);
@@ -93,6 +91,8 @@ public class AKS {
 
             return result;
         }
+
+
 
         /*
         //OLD STEP 1 IN NON LINEAR TIME
@@ -145,14 +145,11 @@ public class AKS {
 
 
         //Step 2 Find the smallest r such that o_r(n) > log^2 n
-        // o_r(n) is the multiplicative order of n modulo r
-        // the multiplicative order of n modulo r is the
-        // smallest positive integer k with	n^k = 1 (mod r).
         BigInteger k = BigInteger.ZERO;
         BigInteger r = BigInteger.ONE;
 
 
-        //from https://github.com/kisileno
+        //inspired from https://github.com/kisileno/CryptoMethods/ProbablePrimeTest/src/main/java/com/kpi/aks/AKS.java
         while (k.doubleValue()<logp2(bN.doubleValue()))
         {
             //check if k is multiplicative order with current r
@@ -296,13 +293,14 @@ public class AKS {
 
 
 
-
+    //create log base 2
     public static double logb2 (double n)
     {
         double logb2 = (Math.log10(n)/Math.log10(2));
         return logb2;
     }
 
+    //create log base 8
     public static double logb8 (double n)
     {
         double logb8 = (Math.log10(n)/Math.log10(8));
@@ -384,7 +382,7 @@ public class AKS {
         while(true)
         {
             //step 2
-            //int r = POW_8_lg8k(x,k)
+            //int r = POW_b_lg8k(x,k)
 
             double trunc = b.doubleValue() + AKS.logb8(K.doubleValue());
             //System.out.println("trunc = "+ trunc);
